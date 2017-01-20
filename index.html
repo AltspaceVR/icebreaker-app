@@ -1,90 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>FRIEND MAKER 5000</title>
-    <link rel='stylesheet' href='index.css'/>
-  </head>
-  <body>
-    <div class='container'>
-      <div class='questions-container'>
-        <p id='question-text'></p>
-      </div>
-      <button onClick='changeText()'>Next question</button>
-    </div>
-  </body>
-  <script>
-    const questions = [
-      {key: 1, question: 'Given the choice of anyone in the world, whom would you want as a dinner guest?'},
-      {key: 2, question: 'Would you like to be famous? In what way?'},
-      {key: 3, question: 'What would constitute a “perfect” day for you?'},
-      {key: 4, question: 'When did you last sing to yourself? To someone else?'},
-      {key: 5, question: 'If you were able to live to the age of 90 and retain either the mind or body of a 30-year-old for the last 60 years of your life, which would you want?'},
-      {key: 6, question: 'Before making a telephone call, do you ever rehearse what you are going to say? Why?'},
-      {key: 7, question: ' Do you have a secret hunch about how you will die?'},
-      {key: 8, question: 'Find three things everybody playing has in common'},
-      {key: 9, question: 'For what in your life do you feel most grateful?'},
-      {key: 10, question: 'If you could change anything about the way you were raised, what would it be?'},
-      {key: 11, question: 'What book or TV show changed your life?'},
-      {key: 12, question: 'If you could wake up tomorrow having gained any one quality or ability, what would it be?'},
-      {key: 13, question: 'If a crystal ball could tell you the truth about yourself, your life, the future or anything else, what would you want to know?'},
-      {key: 14, question: "Is there something that you've dreamt of doing for a long time? Why haven't you done it?"},
-      {key: 15, question: 'What is the greatest accomplishment of your life?'},
-      {key: 16, question: 'What do you value most in a friendship?'},
-      {key: 17, question: 'What is your most treasured memory?'},
-      {key: 18, question: 'What is your most terrible memory?'},
-      {key: 19, question: 'If you knew that in one year you would die suddenly, would you change anything about the way you are now living? Why?'},
-      {key: 20, question: 'What does friendship mean to you?'},
-      {key: 21, question: 'What roles do love and affection play in your life?'},
-      {key: 22, question: 'What was your first job?'},
-      {key: 23, question: 'How close and warm is your family? Do you feel your childhood was happier than most other people?'},
-      {key: 24, question: 'How do you feel about your relationship with your mother?'},
-      {key: 25, question: 'Make three true "we" statements each. For instance, "we are both in this room feeling..."'},
-      {key: 26, question: 'Complete this sentence "I wish I had someone with whom I could share..."'},
-      {key: 27, question: 'If you could talk about one thing with someone that was just as passionate about the topic as you are, what would that one thing be?'},
-      {key: 28, question: "Do you have a pet? If not, what sort of pet would you like?"},
-      {key: 29, question: 'What was the best thing that happened to you this past week?'},
-      {key: 30, question: 'When did you last cry in front of another person? By yourself?'},
-      {key: 31, question: 'Name a gift you will never forget.'},
-      {key: 32, question: 'What, if anything, is too serious to be joked about?'},
-      {key: 33, question: "If you were to die this evening with no opportunity to,communicate with anyone, what would you most regret not having told someone? Why haven't you told them yet?"},
-      {key: 34, question: 'Your house, containing everything you own, catches fire. After saving your loved ones and pets, you have time to safely make a final dash to save any one item. What would it be? Why?'},
-      {key: 35, question: 'Of all the people in your family, whose death would you find most disturbing? Why?'},
-      {key: 36, question: "What's the weirdest thing you've ever eaten?"}
-    ];
-
-    function getParameterByName(name, url) {
-      if (!url) {
-        url = window.location.href;
-      }
-      name = name.replace(/[\[\]]/g, "\\$&");
-      let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-          results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-
-    let qKey = null
-    if(!getParameterByName('q')){
-      document.getElementById('question-text').innerHTML = 'Make friends by asking questions'
-    } else {
-      let qKey = getParameterByName('q');
-      let question = questions[qKey]['question']
-      document.getElementById('question-text').innerHTML = question
-    }
-
-    let lastNum;
-    function changeText(){
-      let questionsLength = Object.keys(questions).length;
-      let randomIndex = Math.floor((Math.random() * questionsLength));
-      console.log(randomIndex + ' ' + qKey)
-      while (randomIndex == qKey) {
-        let randomIndex = Math.floor((Math.random() * questionsLength));
-      }
-      let newUrl = window.location.pathname + '?q=' + randomIndex
-      window.location= newUrl
-
-    }
-  </script>
+    <head>
+        <meta charset="UTF-8">
+        <title>FRIEND MAKER 5000</title>
+        <link rel='stylesheet' href='index.css'/>
+        <script src='questions.js'></script>
+    </head>
+    <body>
+        <div class='text-panel'>
+            <span id='question-text'></span>
+        </div>
+        <div class='button-panel'>
+            <button id='prev'>Back</button>
+            <button id='random'>Random</button>
+            <button id='next'>Next</button>
+        </div>
+        <script src='index.js'></script>
+    </body>
 </html>
