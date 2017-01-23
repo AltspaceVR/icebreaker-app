@@ -4,17 +4,24 @@
         <meta charset="UTF-8">
         <title>FRIEND MAKER 5000</title>
         <link rel='stylesheet' href='index.css'/>
+        <script src='https://aframe.io/releases/0.3.0/aframe.min.js'></script>
+        <script src='https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js'></script>
         <script src='questions.js'></script>
+        <script src='index.js'></script>
     </head>
     <body>
-        <div class='text-panel'>
-            <span id='question-text'></span>
-        </div>
-        <div class='button-panel'>
-            <button id='prev'>Back</button>
-            <button id='random'>Random</button>
-            <button id='next'>Next</button>
-        </div>
-        <script src='index.js'></script>
+        <a-scene altspace='vertical-align: bottom'>
+            <a-assets>
+                <a-asset-item id='sign' src='assets/sign.obj'></a-asset-item>
+                <img id='sign-png' src='assets/sign.png'></img>
+            </a-assets>
+            <a-obj-model src='#sign' material='shader: flat; src: #sign-png'
+                position='0 2 2' rotation='0 0 0' scale='2 2 2'
+            >
+                <a-entity n-text='text: Test; fontSize: 1.5; width: 1.4; height: 1'
+                    position='0 0 0.05' display-question>
+                </a-entity>
+            </a-obj-model>
+        </a-scene>
     </body>
 </html>

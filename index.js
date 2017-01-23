@@ -12,15 +12,6 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-var qKey = -1;
-if(!getParameterByName('q')){
-    document.getElementById('question-text').innerHTML = 'Make friends by asking questions';
-} else {
-    qKey = parseInt(getParameterByName('q'));
-    var question = window.IBQuestions[qKey];
-    document.getElementById('question-text').innerHTML = question;
-}
-
 function changeText(direction)
 {
     var newQKey = 0;
@@ -45,6 +36,42 @@ function makeHandler(direction){
     }
 }
 
-document.querySelector('#random').addEventListener('click', makeHandler('random'));
-document.querySelector('#prev').addEventListener('click', makeHandler('prev'));
-document.querySelector('#next').addEventListener('click', makeHandler('next'));
+var qKey = null;
+
+AFRAME.registerComponent('display-question', {
+    init: function(){
+        qKey = getParameterByName('q');
+        if(qKey === null){
+            this.el.setAttribute('n-text', 'text', 'Make friends by asking questions');
+        }
+        else {
+            this.el.setAttribute('n-text', 'text', IBQuestions[qKey]);
+        }
+    }
+});
+
+AFRAME.registerComponent('advance-question', {
+    schema: {type: 'string'},
+    init: function()
+    {
+        var direction = this.data;
+        
+        this.el.object3D.addEventListener('cursorup', function()
+        {
+            var newQKey = 0;
+            if(direction === 'random'){
+                newQKey = Math.floor((Math.random() * (IBQuestions.length-1)));
+                if(newQKey >= qKey) newQKey++;
+            }
+            else if(direction === 'prev'){
+                newQKey = (IBQuestions.length + qKey - 1) % IBQuestions.length;
+            }
+            else if(direction === 'next'){
+                newQKey = (IBQuestions.length + qKey + 1) % IBQuestions.length;
+            }
+
+            var newUrl = '?q=' + newQKey;
+            window.location = newUrl;
+        });
+    }
+});
