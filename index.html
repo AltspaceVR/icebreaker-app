@@ -18,25 +18,22 @@
             <a-obj-model src='#sign' material='shader: flat; src: #sign-png' position='0 2 2' rotation='0 -11 0'>
 
                 <a-entity id='qText' n-text='text: Make friends by asking questions; fontSize: 3; width: 2.8; height: 2'
-                    position='0 0 0.1' display-question='-1' sync='ownOn: controlclick' sync-question>
+                    position='0 0 0.1' display-question='-1' sync sync-question>
                 </a-entity>
 
                 <a-box width=0.4 depth=0.1 height=0.8 position='-1.9 0 0'
-                    wire='on: click; emit: controlclick; target: #qText'
                     material='shader: flat; color: #393833' advance-question='prev'>
                     <a-entity position='0 0 0.051' n-text='text: <; fontSize: 3;'></a-entity>
                     <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>
                     <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
                 </a-box>
                 <a-box width=0.4 depth=0.1 height=0.8 position='1.9 0 0'
-                    wire='on: click; emit: controlclick; target: #qText'
                     material='shader: flat; color: #393833' advance-question='next'>
                     <a-entity position='0 0 0.051' n-text='text: >; fontSize: 3;'></a-entity>
                     <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>
                     <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
                 </a-box>
                 <a-box width=0.8 depth=0.1 height=0.4 position='0 1.3 0'
-                    wire='on: click; emit: controlclick; target: #qText'
                     material='shader: flat; color: #393833' advance-question='random'>
                     <a-entity position='0 0 0.051' n-text='text: Random; fontSize: 2;'></a-entity>
                     <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>

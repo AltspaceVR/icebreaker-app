@@ -39,6 +39,8 @@ AFRAME.registerComponent('advance-question', {
                 newQKey = (IBQuestions.length + qKey + 1) % IBQuestions.length;
             }
 
+            var syncRef = document.querySelector('#qText').components.sync;
+            syncRef.takeOwnership();
             display.setAttribute('display-question', newQKey);
         });
     }

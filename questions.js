@@ -32,7 +32,7 @@
         "When did you last cry in front of another person? By yourself?",
         "Name a gift you will never forget.",
         "What, if anything, is too serious to be joked about?",
-        "If you were to die this evening with no opportunity to,communicate with anyone, what would you most regret not having told someone? Why haven't you told them yet?",
+        "If you were to die this evening with no opportunity to communicate with anyone, what would you most regret not having told someone? Why haven't you told them yet?",
         "Your house, containing everything you own, catches fire. After saving your loved ones and pets, you have time to safely make a final dash to save any one item. What would it be? Why?",
         "Of all the people in your family, whose death would you find most disturbing? Why?",
         "What's the weirdest thing you've ever eaten?"
