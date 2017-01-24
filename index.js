@@ -5,6 +5,10 @@ AFRAME.registerComponent('display-question', {
     update: function(){
         if( this.data >= 0 && this.data < IBQuestions.length ){
             this.el.setAttribute('n-text', 'text', IBQuestions[this.data]);
+            if(IBQuestions[this.data].length < 90)
+                this.el.setAttribute('n-text', 'fontSize', 3);
+            else
+                this.el.setAttribute('n-text', 'fontSize', 2);
         }
         else {
             this.el.setAttribute('n-text', 'text', 'Make friends by asking questions');
@@ -24,6 +28,7 @@ AFRAME.registerComponent('advance-question', {
             var qKey = parseInt(display.getAttribute('display-question'));
             var newQKey = 0;
             if(direction === 'random'){
+                // choose a random item that is not the current one
                 newQKey = Math.floor((Math.random() * (IBQuestions.length-1)));
                 if(newQKey >= qKey) newQKey++;
             }

@@ -7,7 +7,7 @@
         "If you were able to live to the age of 90 and retain either the mind or body of a 30-year-old for the last 60 years of your life, which would you want?",
         "Before making a telephone call, do you ever rehearse what you are going to say? Why?",
         "Do you have a secret hunch about how you will die?",
-        "Find three things everybody playing has in common",
+        "Find three things everybody playing has in common.",
         "For what in your life do you feel most grateful?",
         "If you could change anything about the way you were raised, what would it be?",
         "What book or TV show changed your life?",
