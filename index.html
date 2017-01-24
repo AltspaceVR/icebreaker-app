@@ -6,11 +6,12 @@
         <link rel='stylesheet' href='index.css'/>
         <script src='https://aframe.io/releases/0.3.0/aframe.min.js'></script>
         <script src='https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js'></script>
+        <script src="http://sdk.altvr.com/libs/altspace.js/0.28.1/altspace.min.js"></script>
         <script src='questions.js'></script>
         <script src='index.js'></script>
     </head>
     <body>
-        <a-scene altspace='vertical-align: bottom'>
+        <a-scene altspace='vertical-align: bottom' sync-system='author: AltspaceVR; app: icebreaker-app'>
             <a-assets>
                 <a-asset-item id='sign' src='assets/sign.obj'></a-asset-item>
                 <img id='sign-png' src='assets/sign.png'></img>
@@ -18,24 +19,29 @@
             <a-obj-model src='#sign' material='shader: flat; src: #sign-png'
                 position='0 2 2' rotation='0 0 0' scale='2 2 2'
             >
-                <a-entity n-text='text: Test; fontSize: 1.5; width: 1.4; height: 1'
-                    position='0 0 0.05' display-question>
+                <a-entity id='qText' n-text='text: Test; fontSize: 1.5; width: 1.4; height: 1'
+                    position='0 0 0.05' display-question='-1' sync='ownOn: click' sync-question>
                 </a-entity>
-                <a-box width=0.2 depth=0.05 height=0.4 position='-0.95 0 0' color='#3b1804' advance-question='prev'>
+
+                <a-box width=0.2 depth=0.05 height=0.4 position='-0.95 0 0'
+                    material='shader: flat; color: #3b1804' advance-question='prev'>
                     <a-entity position='0 0 0.026' n-text='text: <; fontSize: 2;'></a-entity>
                     <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>
                     <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
                 </a-box>
-                <a-box width=0.2 depth=0.05 height=0.4 position='0.95 0 0' color='#3b1804' advance-question='next'>
+                <a-box width=0.2 depth=0.05 height=0.4 position='0.95 0 0'
+                    material='shader: flat; color: #3b1804' advance-question='next'>
                     <a-entity position='0 0 0.026' n-text='text: >; fontSize: 2;'></a-entity>
                     <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>
                     <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
                 </a-box>
-                <a-box width=0.4 depth=0.05 height=0.2 position='0 0.65 0' color='#3b1804' advance-question='random'>
+                <a-box width=0.4 depth=0.05 height=0.2 position='0 0.65 0'
+                    material='shader: flat; color: #3b1804' advance-question='random'>
                     <a-entity position='0 0 0.026' n-text='text: Random; fontSize: 1;'></a-entity>
                     <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>
                     <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
                 </a-box>
+
             </a-obj-model>
         </a-scene>
     </body>

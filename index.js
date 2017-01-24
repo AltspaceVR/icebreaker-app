@@ -1,53 +1,14 @@
 'use strict';
 
-function getParameterByName(name, url) {
-    if (!url) {
-        url = window.location.href;
-    }
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-    results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-function changeText(direction)
-{
-    var newQKey = 0;
-    if(direction === 'random'){
-        newQKey = Math.floor((Math.random() * (IBQuestions.length-1)));
-        if(newQKey >= qKey) newQKey++;
-    }
-    else if(direction === 'prev'){
-        newQKey = (IBQuestions.length + qKey - 1) % IBQuestions.length;
-    }
-    else if(direction === 'next'){
-        newQKey = (IBQuestions.length + qKey + 1) % IBQuestions.length;
-    }
-
-    var newUrl = '?q=' + newQKey;
-    window.location = newUrl;
-}
-
-function makeHandler(direction){
-    return function(){
-        changeText(direction);
-    }
-}
-
-var qKey = -1;
-
 AFRAME.registerComponent('display-question', {
-    init: function(){
-        qKey = parseInt(getParameterByName('q'));
-        if( qKey >= 0 && qKey < IBQuestions.length ){
-            this.el.setAttribute('n-text', 'text', IBQuestions[qKey]);
+    schema: {type: 'int'},
+    update: function(){
+        if( this.data >= 0 && this.data < IBQuestions.length ){
+            this.el.setAttribute('n-text', 'text', IBQuestions[this.data]);
         }
         else {
             this.el.setAttribute('n-text', 'text', 'Make friends by asking questions');
         }
-
     }
 });
 
@@ -59,6 +20,7 @@ AFRAME.registerComponent('advance-question', {
 
         this.el.object3D.addEventListener('cursorup', function()
         {
+            var qKey = document.querySelector('#qText').getAttribute('display-question');
             var newQKey = 0;
             if(direction === 'random'){
                 newQKey = Math.floor((Math.random() * (IBQuestions.length-1)));
@@ -71,8 +33,51 @@ AFRAME.registerComponent('advance-question', {
                 newQKey = (IBQuestions.length + qKey + 1) % IBQuestions.length;
             }
 
-            var newUrl = '?q=' + newQKey;
-            window.location = newUrl;
+            document.querySelector('#qText').setAttribute('display-question', newQKey);
         });
     }
+});
+
+AFRAME.registerComponent('sync-question',
+{
+	dependencies: ['sync'],
+	init: function () {
+		var component = this;
+		var sync = component.el.components.sync;
+		if(sync.isConnected) start(); else component.el.addEventListener('connected', start);
+
+		function start(){
+			var questionRef = sync.dataRef.child('question');
+
+			var refChangedLocked = false;
+
+			var firstValue = true;
+
+			component.el.addEventListener('componentchanged', function (event) {
+				var name = event.detail.name;
+				var oldData = event.detail.oldData;
+				var newData = event.detail.newData;
+
+				if (name !== 'display-question') return;
+				if (refChangedLocked) return;
+
+				if (oldData !== newData) {
+					if(sync.isMine){
+						questionRef.set(newData);
+					}
+				}
+			});
+
+			questionRef.on('value', function (snapshot) {
+				if (sync.isMine && !firstValue) return;
+				var question = snapshot.val();
+
+				refChangedLocked = true;
+				component.el.setAttribute('display-question', question);
+				refChangedLocked = false;
+
+				firstValue = false;
+			});
+		}
+	}
 });
