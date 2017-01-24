@@ -20,7 +20,8 @@ AFRAME.registerComponent('advance-question', {
 
         this.el.object3D.addEventListener('cursorup', function()
         {
-            var qKey = document.querySelector('#qText').getAttribute('display-question');
+            var display = document.querySelector('#qText')
+            var qKey = parseInt(display.getAttribute('display-question'));
             var newQKey = 0;
             if(direction === 'random'){
                 newQKey = Math.floor((Math.random() * (IBQuestions.length-1)));
@@ -33,7 +34,7 @@ AFRAME.registerComponent('advance-question', {
                 newQKey = (IBQuestions.length + qKey + 1) % IBQuestions.length;
             }
 
-            document.querySelector('#qText').setAttribute('display-question', newQKey);
+            display.setAttribute('display-question', newQKey);
         });
     }
 });
