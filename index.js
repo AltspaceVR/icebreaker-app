@@ -36,17 +36,18 @@ function makeHandler(direction){
     }
 }
 
-var qKey = null;
+var qKey = -1;
 
 AFRAME.registerComponent('display-question', {
     init: function(){
-        qKey = getParameterByName('q');
-        if(qKey === null){
-            this.el.setAttribute('n-text', 'text', 'Make friends by asking questions');
-        }
-        else {
+        qKey = parseInt(getParameterByName('q'));
+        if( qKey >= 0 && qKey < IBQuestions.length ){
             this.el.setAttribute('n-text', 'text', IBQuestions[qKey]);
         }
+        else {
+            this.el.setAttribute('n-text', 'text', 'Make friends by asking questions');
+        }
+
     }
 });
 
@@ -55,7 +56,7 @@ AFRAME.registerComponent('advance-question', {
     init: function()
     {
         var direction = this.data;
-        
+
         this.el.object3D.addEventListener('cursorup', function()
         {
             var newQKey = 0;

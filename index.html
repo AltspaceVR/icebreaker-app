@@ -21,6 +21,21 @@
                 <a-entity n-text='text: Test; fontSize: 1.5; width: 1.4; height: 1'
                     position='0 0 0.05' display-question>
                 </a-entity>
+                <a-box width=0.2 depth=0.05 height=0.4 position='-0.95 0 0' color='#3b1804' advance-question='prev'>
+                    <a-entity position='0 0 0.026' n-text='text: <; fontSize: 2;'></a-entity>
+                    <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>
+                    <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
+                </a-box>
+                <a-box width=0.2 depth=0.05 height=0.4 position='0.95 0 0' color='#3b1804' advance-question='next'>
+                    <a-entity position='0 0 0.026' n-text='text: >; fontSize: 2;'></a-entity>
+                    <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>
+                    <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
+                </a-box>
+                <a-box width=0.4 depth=0.05 height=0.2 position='0 0.65 0' color='#3b1804' advance-question='random'>
+                    <a-entity position='0 0 0.026' n-text='text: Random; fontSize: 1;'></a-entity>
+                    <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>
+                    <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
+                </a-box>
             </a-obj-model>
         </a-scene>
     </body>
