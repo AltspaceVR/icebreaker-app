@@ -14,8 +14,8 @@
         "What sport or activity did you do in school?",
         "How do you want to be remembered?",
         "What do you spend most of your money on?",
-        "Would you rather live in the city or the woods?","
-        "What's your favorite comedy?","
+        "Would you rather live in the city or the woods?",
+        "What's your favorite comedy?",
         "If you could travel anywhere in the world, where would it be?",
         "If you could live forever, would you? How would you spend eternity?"
         "What message would you choose to send to an advanced alien species?",
