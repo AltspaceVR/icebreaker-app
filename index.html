@@ -12,11 +12,10 @@
     <body>
         <a-scene altspace='vertical-align: bottom' sync-system='author: AltspaceVR; app: icebreaker-app'>
             <a-assets>
-                <a-asset-item id='sign' src='assets/sign.obj'></a-asset-item>
-                <img id='sign-png' src='assets/sign.jpg'></img>
+                <a-asset-item id='sign-obj' src='assets/sign.obj'></a-asset-item>
+                <a-asset-item id='sign-mtl' src='assets/sign.mtl'></img>
             </a-assets>
-            <a-obj-model src='#sign' material='shader: flat; src: #sign-png' position='0 2 2'>
-                <a-entity position='0 0.9625 0.11' n-text='text: COMMON GROUNDS; fontSize: 2'></a-entity>
+            <a-obj-model src='#sign-obj' mtl='#sign-mtl' position='0 2 2'>
 
                 <a-entity id='qText' n-text='text: Make friends by asking questions; fontSize: 3; width: 2.8; height: 2'
                     position='0 0 0.1' display-question='-1' sync sync-question>
