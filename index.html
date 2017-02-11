@@ -15,7 +15,8 @@
                 <a-asset-item id='sign' src='assets/sign.obj'></a-asset-item>
                 <img id='sign-png' src='assets/sign.jpg'></img>
             </a-assets>
-            <a-obj-model src='#sign' material='shader: flat; src: #sign-png' position='0 2 2' rotation='0 -11 0'>
+            <a-obj-model src='#sign' material='shader: flat; src: #sign-png' position='0 2 2'>
+                <a-entity position='0 0.9625 0.11' n-text='text: COMMON GROUNDS; fontSize: 2'></a-entity>
 
                 <a-entity id='qText' n-text='text: Make friends by asking questions; fontSize: 3; width: 2.8; height: 2'
                     position='0 0 0.1' display-question='-1' sync sync-question>
@@ -33,9 +34,9 @@
                     <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>
                     <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
                 </a-box>
-                <a-box width=0.8 depth=0.1 height=0.4 position='0 1.3 0'
+                <a-box width=0.8 depth=0.1 height=0.3 position='0 -1.25 0'
                     material='shader: flat; color: #393833' advance-question='random'>
-                    <a-entity position='0 0 0.051' n-text='text: Random; fontSize: 2;'></a-entity>
+                    <a-entity position='0 -0.02 0.051' n-text='text: Random; fontSize: 2;'></a-entity>
                     <a-animation begin='mouseenter' attribute='scale' dur=150 to='1.2 1.2 1.2'></a-animation>
                     <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
                 </a-box>
