@@ -15,7 +15,8 @@
                 <a-asset-item id='sign-obj' src='assets/sign.obj'></a-asset-item>
                 <a-asset-item id='sign-mtl' src='assets/sign.mtl'></img>
             </a-assets>
-            <a-obj-model src='#sign-obj' mtl='#sign-mtl' position='0 2 2'>
+            <a-entity id='sign' position='0 2 2'>
+                <a-obj-model src='#sign-obj' mtl='#sign-mtl' altspace-cursor-collider='enabled: false'></a-obj-model>
 
                 <a-entity id='qText' n-text='text: Make friends by asking questions; fontSize: 3; width: 2.8; height: 2'
                     position='0 0 0.1' display-question='-1' sync sync-question>
@@ -40,7 +41,7 @@
                     <a-animation begin='mouseleave' attribute='scale' dur=150 to='1 1 1'></a-animation>
                 </a-box>
 
-            </a-obj-model>
+            </a-entity>
         </a-scene>
     </body>
 </html>
