@@ -24,7 +24,7 @@
         "What's your favorite dish to cook?",
         "If it were possible have a pet dinosaur, what dinosaur would you want?",
         "What's the best concert you've ever attended?",
-        "What dream have you had that still resontes with you?",
+        "What dream have you had that still resonates with you?",
         "Which are you more likely to fight for, love or money? Why?",
         "If you could change one law, what would it be?",
         "Would you rather explore the bottom of the ocean or a new planet?",
