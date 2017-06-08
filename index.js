@@ -9,7 +9,7 @@ var RADIUS = 4;
 function pollEvents() {
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', "https://account.altvr.com/api/home/recommended");
+    xhr.open('GET', "https://account.altvr.com/api/home/my_experiences");
     xhr.withCredentials = true;
     xhr.onreadystatechange = function(e) {
         if (this.readyState === XMLHttpRequest.DONE) {
@@ -67,7 +67,7 @@ function calculatePortalPositionAndRotation(i) {
     var yPos = Y_CENTER - RADIUS * Math.sin(angle);
 
     var position = xPos + " 0.5 " + yPos;
-    var rotation = "0 " + theta + " 0";
+    var rotation = "0 " + (theta + 15) + " 0";
     return [position, rotation];
 }
 
