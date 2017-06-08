@@ -9,7 +9,7 @@ var RADIUS = 4;
 function pollEvents() {
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', "https://account.altvr.com/api/home/my_experiences");
+    xhr.open('GET', "https://account.altvr.com/api/home/recommended");
     xhr.withCredentials = true;
     xhr.onreadystatechange = function(e) {
         if (this.readyState === XMLHttpRequest.DONE) {
