@@ -49,6 +49,7 @@ function pollEvents() {
                 eventTitle.setAttribute("position", "0 0.3 0");
                 newPortal.appendChild(eventTitle);
 
+                currentEventPortals[sids[i]] = newPortal;
                 document.getElementById("app").appendChild(newPortal);
             }
         }
